@@ -12,6 +12,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Start with splash screen on app openning
+    [self startSplashScreen];
+    
     // Override point for customization after application launch.
     return YES;
 }
@@ -20,6 +23,7 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    [RNAppData saveData:[RNAppData favData]];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -41,6 +45,35 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [RNAppData saveData:[RNAppData favData]];
+}
+
+-(void)startSplashScreen
+{
+    // Creates and designs the main view for the splash screen
+    UIView *view =[[UIView alloc] initWithFrame:self.window.frame];
+    [view setBackgroundColor:[UIColor brownColor]];
+    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake((view.frame.size.width-170)/2, (view.frame.size.height-50)/2, 200, 100)];
+    [title setFont:[UIFont fontWithName:@"Helvetica-bold" size:24]];
+    [title setText:@"Recipe Network"];
+    [title setTextColor:[UIColor whiteColor]];
+    [view addSubview:title];
+    [view bringSubviewToFront:title];
+    
+    // Adds splash screen to the window
+    [self.window.rootViewController.view addSubview:view];
+    [self.window.rootViewController.view bringSubviewToFront:view];
+    
+    // Starts splash view animation
+    [UIView animateWithDuration:1.5f delay:2.0f options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         view.alpha = .0f;
+                     } completion:^(BOOL finished){
+                         if(finished)
+                         {
+                             [view removeFromSuperview];
+                         }
+                     }];
 }
 
 @end

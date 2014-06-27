@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNAppData.h"
 
 @interface RNAppDelegate : UIResponder <UIApplicationDelegate>
 

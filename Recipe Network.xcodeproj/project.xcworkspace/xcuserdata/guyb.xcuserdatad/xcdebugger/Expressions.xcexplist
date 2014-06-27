@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[RNTableViewController tableView:cellForRowAtIndexPath:]:RNTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "indexPath">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__33+[RNWSManager getRestaurants::::]_block_invoke:RNWSManager.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
